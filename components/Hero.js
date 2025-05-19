@@ -8,7 +8,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-20">
           <img 
-            src="https://pixabay.com/get/geb4a66f0248fd946cbeba0044ab7d6c36c724645094ab393e16ef87c6248638b40513d208cc65f2a33e069251c1f0506ce85f0f5ae10b0c88f8036d08e85c40b_1280.jpg" 
+            src="https://asset.cloudinary.com/dytmmuosl/1e197ee3d58168574bd3a4931dff7a38" 
             alt="Abstract tech background" 
             className="w-full h-full object-cover"
           />
