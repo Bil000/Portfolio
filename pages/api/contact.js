@@ -1,3 +1,5 @@
+import nodemailer from 'nodemailer';
+
 export default async function handler(req, res) {
   // Only allow POST requests for this endpoint
   if (req.method !== 'POST') {
@@ -12,19 +14,59 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, message: 'Missing required fields' });
     }
     
-    // Simulate sending an email (in production, you'd connect this to a real email service)
+    // Log form submission for debugging
     console.log('Form submission received:');
     console.log(`Name: ${name}`);
     console.log(`Email: ${email}`);
     console.log(`Message: ${message}`);
     
-    // Simulate a successful email being sent
-    // In a real implementation, this is where you'd use a mail service 
+    // Create email content
+    const emailContent = {
+      from: email,
+      to: 'clebiodesouza22@gmail.com',
+      subject: `Portfolio Contact Form: Message from ${name}`,
+      text: `
+        Name: ${name}
+        Email: ${email}
+        
+        Message:
+        ${message}
+      `,
+      html: `
+        <h2>New Contact Form Message</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <h3>Message:</h3>
+        <p>${message.replace(/\\n/g, '<br>')}</p>
+      `
+    };
+    
+    // Create a test account on Ethereal for development/testing
+    // In production, you'd use your actual email credentials
+    const testAccount = await nodemailer.createTestAccount();
+    
+    // Create transporter (email sending service)
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.ethereal.email',
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: testAccount.user,
+        pass: testAccount.pass
+      }
+    });
+    
+    // Send the email
+    const info = await transporter.sendMail(emailContent);
+    
+    console.log('Message sent: %s', info.messageId);
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
     
     // Return success response
     return res.status(200).json({ 
       success: true, 
-      message: 'Thank you for your message! I will get back to you soon.' 
+      message: 'Thank you for your message! I will get back to you soon.',
+      previewUrl: nodemailer.getTestMessageUrl(info) // This is for testing only
     });
     
   } catch (error) {
