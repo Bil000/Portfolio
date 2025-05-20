@@ -22,8 +22,9 @@ export default async function handler(req, res) {
     
     // Create email content
     const emailContent = {
-      from: email,
+      from: '"Portfolio Contact Form" <clebiodesouza22@gmail.com>',
       to: 'clebiodesouza22@gmail.com',
+      replyTo: email,
       subject: `Portfolio Contact Form: Message from ${name}`,
       text: `
         Name: ${name}
@@ -37,22 +38,16 @@ export default async function handler(req, res) {
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <h3>Message:</h3>
-        <p>${message.replace(/\\n/g, '<br>')}</p>
+        <p>${message.replace(/\n/g, '<br>')}</p>
       `
     };
     
-    // Create a test account on Ethereal for development/testing
-    // In production, you'd use your actual email credentials
-    const testAccount = await nodemailer.createTestAccount();
-    
-    // Create transporter (email sending service)
+    // Create transporter (email sending service) for Gmail
     const transporter = nodemailer.createTransport({
-      host: 'smtp.ethereal.email',
-      port: 587,
-      secure: false, // true for 465, false for other ports
+      service: 'gmail',
       auth: {
-        user: testAccount.user,
-        pass: testAccount.pass
+        user: 'clebiodesouza22@gmail.com', // Your Gmail address
+        pass: process.env.GMAIL_APP_PASSWORD // Your Gmail App Password (will be provided by user)
       }
     });
     
@@ -60,13 +55,11 @@ export default async function handler(req, res) {
     const info = await transporter.sendMail(emailContent);
     
     console.log('Message sent: %s', info.messageId);
-    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
     
     // Return success response
     return res.status(200).json({ 
       success: true, 
-      message: 'Thank you for your message! I will get back to you soon.',
-      previewUrl: nodemailer.getTestMessageUrl(info) // This is for testing only
+      message: 'Thank you for your message! I will get back to you soon.'
     });
     
   } catch (error) {
