@@ -12,6 +12,7 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,23 +45,48 @@ export default function Contact() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (validateForm()) {
       setIsSubmitting(true);
+      setIsError(false);
       
-      // Simulate form submission
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setSubmitMessage('Thank you for your message! I will get back to you soon.');
-        setFormState({ name: '', email: '', message: '' });
+      try {
+        // Send form data to our API route
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formState),
+        });
         
-        // Clear success message after 5 seconds
+        const data = await response.json();
+        
+        if (response.ok) {
+          // Form submission successful
+          setSubmitMessage(data.message || 'Thank you for your message! I will get back to you soon.');
+          setFormState({ name: '', email: '', message: '' });
+          setIsError(false);
+        } else {
+          // Form submission failed
+          setSubmitMessage(data.message || 'Something went wrong. Please try again.');
+          setIsError(true);
+        }
+      } catch (error) {
+        // Error submitting form
+        console.error('Error submitting form:', error);
+        setSubmitMessage('Network error. Please check your connection and try again.');
+        setIsError(true);
+      } finally {
+        setIsSubmitting(false);
+        
+        // Clear message after 5 seconds
         setTimeout(() => {
           setSubmitMessage('');
         }, 5000);
-      }, 1500);
+      }
     }
   };
 
@@ -121,7 +147,7 @@ export default function Contact() {
             <h3 className="text-2xl font-semibold mb-6">Send Me a Message</h3>
             
             {submitMessage && (
-              <div className="mb-6 p-4 bg-green-500 bg-opacity-20 rounded-lg text-white">
+              <div className={`mb-6 p-4 rounded-lg text-white ${isError ? 'bg-red-500 bg-opacity-20' : 'bg-green-500 bg-opacity-20'}`}>
                 {submitMessage}
               </div>
             )}
