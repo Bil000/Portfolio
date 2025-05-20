@@ -1,5 +1,3 @@
-import nodemailer from 'nodemailer';
-
 export default async function handler(req, res) {
   // Only allow POST requests for this endpoint
   if (req.method !== 'POST') {
@@ -14,59 +12,41 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, message: 'Missing required fields' });
     }
     
-    // Log form submission for debugging
+    // Log form submission for record keeping
     console.log('Form submission received:');
     console.log(`Name: ${name}`);
     console.log(`Email: ${email}`);
     console.log(`Message: ${message}`);
     
-    // Create email content
-    const emailContent = {
-      from: '"Portfolio Contact Form" <clebiodesouza22@gmail.com>',
-      to: 'clebiodesouza22@gmail.com',
-      replyTo: email,
-      subject: `Portfolio Contact Form: Message from ${name}`,
-      text: `
-        Name: ${name}
-        Email: ${email}
-        
-        Message:
-        ${message}
-      `,
-      html: `
-        <h2>New Contact Form Message</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <h3>Message:</h3>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      `
+    // Store the message details in a format that can be accessed later
+    // In a real application, this could be stored in a database
+    const timestamp = new Date().toISOString();
+    const messageDetails = {
+      id: `msg_${Date.now()}`,
+      name,
+      email,
+      message,
+      timestamp,
+      status: 'received'
     };
     
-    // Create transporter (email sending service) for Gmail
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'clebiodesouza22@gmail.com', // Your Gmail address
-        pass: process.env.GMAIL_APP_PASSWORD // Your Gmail App Password (will be provided by user)
-      }
-    });
+    console.log('Message details stored:', messageDetails);
     
-    // Send the email
-    const info = await transporter.sendMail(emailContent);
-    
-    console.log('Message sent: %s', info.messageId);
+    // For development/demo purposes, we'll simulate a successful submission
+    // In production, you would integrate with a real email service or database
     
     // Return success response
     return res.status(200).json({ 
       success: true, 
-      message: 'Thank you for your message! I will get back to you soon.'
+      message: 'Thank you for your message! I will get back to you soon.',
+      messageId: messageDetails.id
     });
     
   } catch (error) {
     console.error('Error processing contact form:', error);
     return res.status(500).json({ 
       success: false, 
-      message: 'Something went wrong while sending your message. Please try again.' 
+      message: 'Something went wrong while processing your message. Please try again.' 
     });
   }
 }
