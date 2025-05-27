@@ -8,7 +8,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-20">
           <img 
-            src="https://asset.cloudinary.com/dytmmuosl/1e197ee3d58168574bd3a4931dff7a38" 
+            src="https://res.cloudinary.com/dytmmuosl/image/upload/v1726528748/background_profile_ktqoeb.png"
             alt="Abstract tech background" 
             className="w-full h-full object-cover"
           />
@@ -111,21 +111,19 @@ export default function Hero() {
           </div>
 
           {/* Hero image or decoration */}
-          <motion.div 
-            className="md:w-2/5 mt-12 md:mt-0"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.5, duration: 0.8 }}
+          <div 
+            className="md:w-2/5 mt-12 md:mt-0 flex justify-center items-center"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-blue-600 rounded-full opacity-20 blur-3xl transform -rotate-6"></div>
+              <div className="absolute inset-0 bg-blue-600 rounded-full opacity-20 blur-3xl"></div>
               <img 
-                src="https://pixabay.com/get/g0f0a511a86ffc69037e4d9c5e031a3133b727cc52ee9b0c8e16d6e579789e5d9601bf6a3cac728b605d28f602985364e9bfa3e02426e63075fe0f26393011b1e_1280.jpg" 
+                src="https://res.cloudinary.com/dytmmuosl/image/upload/v1747678389/GIF_20240819_110350_680_fw9yum.gif" 
                 alt="Developer workspace" 
-                className="relative z-10 rounded-2xl shadow-2xl transform -rotate-3 hover:rotate-0 transition-all duration-500 max-w-full"
+                className="relative z-10 rounded-2xl shadow-2xl max-w-[75%] mx-auto transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+                style={{ transform: 'rotate(0deg)' }}
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 

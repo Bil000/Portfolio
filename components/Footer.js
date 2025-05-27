@@ -59,12 +59,6 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        
-        <div className="text-center mt-8 text-sm text-gray-500">
-          <p className="flex items-center justify-center">
-            Made with <FaHeart className="text-red-500 mx-1" /> using Next.js, Tailwind CSS & Framer Motion
-          </p>
-        </div>
       </div>
     </footer>
   );

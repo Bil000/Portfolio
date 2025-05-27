@@ -311,11 +311,6 @@ export default function Contact() {
             </div>
             
             <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6">
-              <h3 className="text-xl font-semibold mb-4">Availability</h3>
-              <p className="text-blue-100 mb-4">
-                I'm currently available for part-time work on weekdays and weekends.
-                My work approach is flexible, allowing me to adapt to various project needs.
-              </p>
               <div className="p-4 bg-white/5 rounded-lg">
                 <h4 className="font-medium mb-2">Quick Response Time</h4>
                 <p className="text-sm text-blue-100">

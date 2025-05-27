@@ -36,6 +36,19 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
 
+      {/* Background image for all sections, under everything else */}
+      <div
+        className="fixed inset-0 -z-10 w-full h-full"
+        style={{
+          backgroundImage: "url('https://res.cloudinary.com/dytmmuosl/image/upload/v1726528748/background_profile_ktqoeb.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.2,
+        }}
+        aria-hidden="true"
+      />
+
       <Layout>
         <Hero />
         

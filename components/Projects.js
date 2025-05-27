@@ -6,7 +6,7 @@ export default function Projects() {
     {
       title: "NovaEdge Media",
       description: "An AI-powered marketing assistant that helps marketers automate campaigns, generate content, optimize ad spend, and gain real-time insights.",
-      image: "https://pixabay.com/get/g5e29ff65b3e5ea741a6d66a1421976091d601aec670790b4f064fe5d2f4ad6d4dfffea3c7a4eea3c41e99c66f40c2a313f4e97fc173882348735653682da21ec_1280.jpg",
+      image: "https://res.cloudinary.com/dytmmuosl/image/upload/v1748375448/ChatGPT_Image_May_27_2025_08_49_14_PM_m6iu1r.png",
       technologies: ["Next.js", "Node.js", "Tailwind CSS", "AI Integration"],
       link: "https://www.novaedgemedia.com/",
       github: null,
@@ -16,7 +16,7 @@ export default function Projects() {
     {
       title: "Neural AI",
       description: "A planned AI chatbot focused on fat loss guidance. Designed to provide personalized advice and tracking for fitness enthusiasts.",
-      image: "https://pixabay.com/get/g3fb2ff9ca9a5c8afdf777557064ef6ef9da52f92cbb78123308db9ee73db54d9d81076b11ab40dd4b3e4fe6b650dd2f1196ed5ab65e217fb4d475927a684e06e_1280.jpg",
+      image: "https://res.cloudinary.com/dytmmuosl/image/upload/v1748375801/ChatGPT_Image_May_27_2025_08_55_21_PM_o2aqsf.png",
       technologies: ["Next.js", "Tailwind CSS", "Node.js", "HTML/JavaScript"],
       link: null,
       github: "https://github.com/Bil000/Neural.AI",
@@ -26,7 +26,7 @@ export default function Projects() {
     {
       title: "Military Event Registration",
       description: "A secure login system built for military event registration with automated data-entry and real-time information updates.",
-      image: "https://pixabay.com/get/g5289bf3fb4e8fce17f46c25f09f73eb123c6a08a80b225878f01708ed71f69431c137026f3ab3ead47d96d1fae412da854ef5d693bd5119d01548aef53a1d948_1280.jpg",
+      image: "https://res.cloudinary.com/dytmmuosl/image/upload/v1748376165/ChatGPT_Image_May_27_2025_09_02_07_PM_n3xuwh.png",
       technologies: ["HTML", "CSS", "JavaScript", "Node.js"],
       link: null,
       github: null,
