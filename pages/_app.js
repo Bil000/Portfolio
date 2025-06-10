@@ -29,9 +29,14 @@ function MyApp({ Component, pageProps, router }) {
   }, []);
 
   return (
-    <AnimatePresence mode="wait">
-      <Component {...pageProps} key={router?.route} />
-    </AnimatePresence>
+    <>
+      <style jsx global>{`
+        /* ...existing CSS... */
+      `}</style>
+      <AnimatePresence mode="wait">
+        <Component {...pageProps} key={router?.route} />
+      </AnimatePresence>
+    </>
   );
 }
 

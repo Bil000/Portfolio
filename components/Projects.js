@@ -28,7 +28,7 @@ export default function Projects() {
       description: "A secure login system built for military event registration with automated data-entry and real-time information updates.",
       image: "https://res.cloudinary.com/dytmmuosl/image/upload/v1748376165/ChatGPT_Image_May_27_2025_09_02_07_PM_n3xuwh.png",
       technologies: ["HTML", "CSS", "JavaScript", "Node.js"],
-      link: "/EsaoPage/pages/_app",
+      link: "/EsaoPage/registro",
       github: "",
       status: "Completed",
       featured: false
