@@ -15,10 +15,10 @@ globalThis.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/index.js"
     ],
-    "/EsaoPage/_app": [
+    "/EsaoPage/page": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/EsaoPage/_app.js"
+      "static/chunks/pages/EsaoPage/page.js"
     ],
     "/_app": [
       "static/chunks/webpack.js",
