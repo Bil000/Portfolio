@@ -3,7 +3,7 @@ import { FaArrowDown } from 'react-icons/fa';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center gradient-bg overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center gradient-bg overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-20">
@@ -28,7 +28,6 @@ export default function Hero() {
           repeatType: "reverse",
         }}
       />
-      
       <motion.div
         className="absolute bottom-1/4 left-10 w-64 h-64 bg-blue-700 rounded-full filter blur-3xl opacity-20"
         animate={{
@@ -43,9 +42,9 @@ export default function Hero() {
         }}
       />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-3/5 text-center md:text-left">
+      <div className="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center min-h-screen">
+        <div className="flex flex-col items-center justify-center w-full">
+          <div className="w-full text-center flex flex-col items-center justify-center">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -89,7 +88,7 @@ export default function Hero() {
               </motion.p>
               
               <motion.div 
-                className="flex flex-col sm:flex-row justify-center md:justify-start gap-4"
+                className="flex flex-col sm:flex-row justify-center gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.3, duration: 0.8 }}
@@ -111,17 +110,10 @@ export default function Hero() {
           </div>
 
           {/* Hero image or decoration */}
-          <div 
-            className="md:w-2/5 mt-12 md:mt-0 flex justify-center items-center"
-          >
+          <div className="w-full mt-12 flex justify-center items-center">
             <div className="relative">
               <div className="absolute inset-0 bg-blue-600 rounded-full opacity-20 blur-3xl"></div>
-              <img 
-                src="https://res.cloudinary.com/dytmmuosl/image/upload/v1747678389/GIF_20240819_110350_680_fw9yum.gif" 
-                alt="Developer workspace" 
-                className="relative z-10 rounded-2xl shadow-2xl max-w-[75%] mx-auto transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
-                style={{ transform: 'rotate(0deg)' }}
-              />
+              {/* ...existing code for hero image if any... */}
             </div>
           </div>
         </div>
