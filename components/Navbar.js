@@ -58,7 +58,7 @@ export default function Navbar({ scrollY }) {
           >
             <Link href="#home">
               <span className={`font-bold ${isScrolled ? 'gradient-text' : 'text-white'}`}>
-                Clebio Junior
+                Clebio de Souza
               </span>
             </Link>
           </motion.div>

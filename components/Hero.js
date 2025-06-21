@@ -65,7 +65,7 @@ export default function Hero() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7, duration: 0.8 }}
               >
-                Clebio Junior
+                Clebio de Souza
               </motion.h1>
               
               <motion.h2 
